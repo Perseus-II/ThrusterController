@@ -1,23 +1,23 @@
 #include <Servo.h>
 
-#define DEBUG 1
+//#define DEBUG 1
 
-#define SURGE_PORT_THRUSTER (11)
-#define SURGE_STARBOARD_THRUSTER (3)
-#define HEAVE_A_THRUSTER (9)
-#define HEAVE_B_THRUSTER (10)
+#define SURGE_PORT_THRUSTER (10)
+#define SURGE_STARBOARD_THRUSTER (11)
+#define HEAVE_A_THRUSTER (5)
+#define HEAVE_B_THRUSTER (3)
 
 /* Current states for thrusters */
-float sp = 92.0;
-float ss = 92.0;
-float ha = 92.0;
-float hb = 92.0;
+float sp = 91.0;
+float ss = 91.0;
+float ha = 93.0;
+float hb = 91.0;
 
 /* Desired states for thrusters */
-float sp_d = 92.0; 
-float ss_d = 92.0;
-float ha_d = 92.0;
-float hb_d = 92.0;
+float sp_d = 91.0; 
+float ss_d = 91.0;
+float ha_d = 93.0;
+float hb_d = 91.0;
 
 /* Error states */
 float sp_e = 0.0;
@@ -56,10 +56,10 @@ void loop() {
     ha_d             =   Serial.parseInt();
     hb_d             =   Serial.parseInt();
     /* map input percentage to output servo position */
-    sp_d             =   float(map(sp_d, -100, 100, 6, 180));
-    ss_d             =   float(map(ss_d, -100, 100, 6, 180));
-    ha_d             =   float(map(ha_d, -100, 100, 6, 180));
-    hb_d             =   float(map(hb_d, -100, 100, 6, 180));
+    sp_d             =   float(map(sp_d, -100, 100, 4, 180));
+    ss_d             =   float(map(ss_d, -100, 100, 4, 180));
+    ha_d             =   float(map(ha_d, -100, 100, 9, 180));
+    hb_d             =   float(map(hb_d, -100, 100, 4, 180));
   }
 
   /* update state error */
@@ -124,7 +124,7 @@ void loop() {
   
   #endif
   
-  delay(40);  
+  delay(60);  
   
 }
 
